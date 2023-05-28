@@ -46,34 +46,73 @@ const app = express();
 
 
 
-const axios = require('axios');
+// const axios = require('axios');
 
-// Your Facebook Graph API access token
-const access_token = 'EAADQlvi0xrgBALAV1pZBJh0kJO6KIQOYY7rzSr80rlfTMu1tKt0c7bFLlpsg0lHQoh72pKjZCg0clmM42ujzUDlThoXZAryuH6NvduB2Hm9FmIocUntCXTrZAOjZBuptQnRk3yZCAchVlQvUsiuLPuGfuZBER09R2kkB3HP8Fay1s9vaoHNpSuWeo4WFb6k3mpZBl0pe4ZC8uOmROayZBbvLw7';
+// // Your Facebook Graph API access token
+// const access_token = 'EAADQlvi0xrgBALAV1pZBJh0kJO6KIQOYY7rzSr80rlfTMu1tKt0c7bFLlpsg0lHQoh72pKjZCg0clmM42ujzUDlThoXZAryuH6NvduB2Hm9FmIocUntCXTrZAOjZBuptQnRk3yZCAchVlQvUsiuLPuGfuZBER09R2kkB3HP8Fay1s9vaoHNpSuWeo4WFb6k3mpZBl0pe4ZC8uOmROayZBbvLw7';
 
-// Your Facebook page ID
-const page_id = '100091357234120';
+// // Your Facebook page ID
+// const page_id = '100091357234120';
 
-// The message you want to post
-const message = 'Hello, world!';
+// // The message you want to post
+// const message = 'Hello, world!';
 
-axios({
-    method: 'post',
-    url: `https://graph.facebook.com/${page_id}/feed`,
-    //url: `https://graph.facebook.com/${page_id}/message=${message}&`,
+// axios({
+//     method: 'post',
+//     url: `https://graph.facebook.com/${page_id}/feed`,
+//     //url: `https://graph.facebook.com/${page_id}/message=${message}&`,
 
-    params: {
-        access_token: access_token,
-        message: message,
-    },
-}).then((res) => {
-    console.log(`Status code: ${res.status}`);
-    console.log('Body: ', res.data);
-}).catch((error) => {
-    console.error(error);
+//     params: {
+//         access_token: access_token,
+//         message: message,
+//     },
+// }).then((res) => {
+//     console.log(`Status code: ${res.status}`);
+//     console.log('Body: ', res.data);
+// }).catch((error) => {
+//     console.error(error);
+// });
+
+
+
+
+
+
+
+
+
+const pageId = "100091357234120"
+const page_access_token = "EAADQlvi0xrgBALAV1pZBJh0kJO6KIQOYY7rzSr80rlfTMu1tKt0c7bFLlpsg0lHQoh72pKjZCg0clmM42ujzUDlThoXZAryuH6NvduB2Hm9FmIocUntCXTrZAOjZBuptQnRk3yZCAchVlQvUsiuLPuGfuZBER09R2kkB3HP8Fay1s9vaoHNpSuWeo4WFb6k3mpZBl0pe4ZC8uOmROayZBbvLw7"
+
+
+const path_to_photo = "https://i.pinimg.com/736x/fd/12/43/fd124315d7f435562e9b5eadeee9d784.jpg"
+const postText = "example text 3dddd"
+// const page_access_token = ""
+// const pageId = "" /Users/sushobhanpramanik/Desktop/My folder/img.jpeg
+
+
+app.post("/posttopage", (req, res) => {
+
+    const text = postText;
+    // req.body.text;
+    const img = path_to_photo;
+    // req.body.img;
+
+    axios.post(
+        // `https://graph.facebook.com/${pageId}/feed?message=morning&access_token=${page_access_token}`,
+        // `https://graph.facebook.com/${pageId}/photos?url=${path_to_photo}?&message=${postText}&access_token=${page_access_token}`,
+        `https://graph.facebook.com/${pageId}/photos?url=${path_to_photo}?&message=${postText}&access_token=${page_access_token}`,
+
+        null
+
+        ).then(function (response){ 
+            console.log(response);
+        }) 
+        .catch(function (error){ 
+            console.log(error);
+        });
+
 });
-
-
 
 
 
