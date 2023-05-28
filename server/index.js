@@ -1,6 +1,6 @@
-// const express = require('express');
+const express = require('express');
 // const axios = require('axios');
-// const app = express();
+const app = express();
 
 // // Your Facebook Graph API access token
 // const access_token = '<YOUR_ACCESS_TOKEN>';
@@ -71,4 +71,15 @@ axios({
     console.log('Body: ', res.data);
 }).catch((error) => {
     console.error(error);
+});
+
+
+
+
+
+
+const port = 3000;
+
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
 });
