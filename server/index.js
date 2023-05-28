@@ -59,8 +59,8 @@ const message = 'Hello, world!';
 
 axios({
     method: 'post',
-    // url: `https://graph.facebook.com/${page_id}/feed`,
-    url: `https://graph.facebook.com/${page_id}/message=${message}&`,
+    url: `https://graph.facebook.com/${page_id}/feed`,
+    //url: `https://graph.facebook.com/${page_id}/message=${message}&`,
 
     params: {
         access_token: access_token,
